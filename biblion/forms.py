@@ -46,7 +46,14 @@ class AdminPostForm(forms.ModelForm):
     
     class Meta:
         model = Post
-    
+        fields = [
+            'section', 'title', 'slug', 'author',
+            'teaser',
+            'content',
+            'publish']
+        if can_tweet():
+            fields.append('tweet')
+
     def __init__(self, *args, **kwargs):
         super(AdminPostForm, self).__init__(*args, **kwargs)
         
